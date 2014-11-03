@@ -1,0 +1,3 @@
+O sub sistema de vendas deverá garantir o controle de todas as Ordens de Serviço (OS) solicitadas pelo cliente, fazer a registro básico de clientes, das informações da OS (simples e detalhada) e dos tipos de serviços prestados relacionados a OS.
+Pelo sub sistema de vendas poderá ser extraído relatórios de clientes e OS´s, sendo de características determinadas por período, tipo de serviço, valores, motoboys e clientes atrelados apenas aos serviços prestados.
+O sub sistema de vendas não irá registrar qualquer outro tipo de informação, não irá realizar BI sobre as informações das OS´s e nem imprimir relatórios não relacionados.
