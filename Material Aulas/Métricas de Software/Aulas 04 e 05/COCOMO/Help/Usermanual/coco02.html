@@ -1,0 +1,490 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 4.0">
+<TITLE> File Menu</TITLE>
+</HEAD>
+<BODY>
+
+<B><FONT FACE="Arial" SIZE=4><P ALIGN="JUSTIFY"><A NAME="_Toc459033736">Chapter 2: <A NAME="FileMenu">File Menu</A></A></P>
+</B><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">The COCOMO file types include: project file, <A NAME="modelfile">model file</A>, <A NAME="reportfile">report file</A>, <A NAME="calibrationfile">calibration file</A>, and <A NAME="csvfile">comma separated values (csv) file</A>. The first three are discussed here. The others are discussed in later chapters.</P>
+<P ALIGN="JUSTIFY">The project file in COCOMO stores a project’s data, which include project name, project scale factors, project schedule constraint, module name, <A NAME="SLOC">SLOC</A>, <A NAME="laborrate">labor rate</A>, effort adjustment factors (<A NAME="EAF">EAF</A>), and COCOMO related calculation results.  The COCOMO system gives all project files an ".est" extension.</P>
+<P ALIGN="JUSTIFY">Regarding the model file, as we mentioned in chapter one, COCOMO incorporates <A NAME="predictorfactors">predictor factors</A>, or cost driver attributes, which are grouped into four categories: software <A NAME="productattributes">product attributes</A>, <A NAME="platformattributes">platform attributes</A>, <A NAME="personnelattributes">personnel attributes</A>, and <A NAME="projectattributes">project attributes</A>.  Each of these cost driver attributes determines a multiplying factor, which estimates the effect of the attribute in software development effort.  There are also two user defined <A NAME="EAFfactors">EAF factors</A> plus the project-level required development schedule EAF factor. Besides these cost drivers, COCOMO also has scale factors.  These multiplying factors and effort estimating equations constitute the model of a project.   As we said previously, COCOMO has assigned default values and equations for the annually calibrated default model.  Each time a COCOMO project is created, its effort estimate is based on the default parameter values.  COCOMO provides flexibility in changing the values of multiplying factors, effort estimating equation, or schedule estimating equation.  Adjusted parameter values are stored in the est file, but may also be saved in a model file. Upon saving this model file, these altered values can be applied to another project by loading the saved model file.   The COCOMO system gives all model files a ".mod" extension.</P>
+<P ALIGN="JUSTIFY">The <A NAME="reportfiledescription">report file</A> is a summary report of the COCOMO project.  This report contains all entered and calculated values of a project.  These files are given a ".rpt" extension.</P>
+<P ALIGN="JUSTIFY">The File menu option will enable you to create, retrieve, save, or print COCOMO files.</P>
+<P ALIGN="JUSTIFY">To select the File menu and its options, click on File with the mouse.  The File menu will appear as Figure 2-1.</P>
+
+</FONT><B><FONT FACE="HELVETICA" SIZE=2><P ALIGN="center"><IMG SRC="Image17.gif" WIDTH=648 HEIGHT=409></FONT></P>
+<P ALIGN="center"><FONT FACE="HELVETICA" SIZE=1>FIGURE  2-1 File Menu
+</FONT></P>
+<I><FONT FACE="Arial">
+
+<P ALIGN="JUSTIFY"><A NAME="New"></a><A NAME="_Toc459033737">2.1 New</A></P>
+</B></I></FONT><FONT SIZE=2><P ALIGN="JUSTIFY"></P>
+</FONT><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">The  New option creates a new project file in the COCOMO working window, replacing any previous project file in the working window.</P>
+<B><U><P ALIGN="JUSTIFY">To Create a New Working File</P>
+</B></U><P ALIGN="JUSTIFY">1. Choose New from the File menu with mouse.</P>
+<P ALIGN="JUSTIFY">The working window will now be clear; the previous project file in the working window has been removed.</P>
+<B><P ALIGN="JUSTIFY">Note: </B>New can be selected anytime; however, if the previous project file or model file has been modified, a warning dialog box will appear and requests confirmation. (as seen in Figure 2-2)</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+
+</FONT><B><FONT FACE="HELVETICA" SIZE=1><P ALIGN="center"><IMG SRC="Image18.gif" width=258 height=120></P>
+<P ALIGN="center">FIGURE  2-2 Warning Dialog Box</P>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</B></FONT><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">2. If the modifications on the previous file are not to be saved, choose Yes, otherwise choose No.  If the No is selected, a Save File dialog will appear. (See Save Project and Save Model respectively)</P>
+<OL START=2>
+<OL START=2>
+
+<P ALIGN="JUSTIFY"></OL>
+</OL>
+
+<A NAME="LoadProject"></a><A NAME="_Toc459033738"></A></FONT><A NAME="_Toc459033738"><B><I><FONT FACE="Arial">2.2
+Load Project</FONT></I></B>
+<p></A><FONT FACE="TIMES" SIZE=2>The Load Project option is used to retrieve a project file as well as loading it on the working window.</p>
+<B><U><P ALIGN="JUSTIFY">To Retrieve or Load a Project File</P>
+</B></U><P ALIGN="JUSTIFY">1. Choose Load Project from the File menu with the mouse.</P>
+<P ALIGN="JUSTIFY">2. If a previous project file has been modified in the working window, the dialog box as in Figure 2-3 will appear.</P>
+
+</FONT><B><FONT FACE="HELVETICA" SIZE=1><P ALIGN="center"><IMG SRC="Image18.gif" width=258 height=120></P>
+<P ALIGN="center">FIGURE  2-3 Warning Dialog Box</P>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</B></FONT><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">3. If the previous project file is to be saved, choose Yes, then a Save File dialog box will appear. (See Save Project).  If the modified file is not to be saved, choose No.</P>
+<P ALIGN="JUSTIFY">4. The Load Project dialog box will appear as seen in Figure 2-4.</P>
+
+</FONT><B><FONT FACE="HELVETICA" SIZE=1><P ALIGN="center"><IMG SRC="Image19.jpg" width=427 height=265> </P>
+<P ALIGN="center">FIGURE  2-4 Load Project Dialog Box </P>
+</FONT>
+</B><DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">The file name of a COCOMO project has a default format with ".est" as an extension.  With this window, the desired project file can be selected from the Files scroll list for loading.  If the desired project file does not exist in the scroll list, it is necessary to choose an appropriate directory.</P>
+<P ALIGN="JUSTIFY">5. Choose desired directory for file loading</P>
+<P ALIGN="JUSTIFY">6. When the desired file is shown on the Files list, click it, and click the "OK" button to initiate project loading.</P>
+<P ALIGN="JUSTIFY">7. After a project file is loaded, its file name will be displayed on the PROJECT FILE field at upper left corner on the working window, and all modules and related items will be displayed in the CLEF area.  If the number of modules is beyond the window scope, the scroll bar can be used to look at all items.</P>
+</FONT><B><I><FONT FACE="Arial"><P ALIGN="JUSTIFY"><A NAME="_Toc459033739">2.3&#9;<A NAME="SaveProject">Save Project</A></A></P>
+</B></I></FONT><FONT FACE="TIMES" SIZE=2>
+<P ALIGN="JUSTIFY">The Save Project option is used to store the results of the current COCOMO project as a file with ".est" extension.</P>
+<P ALIGN="JUSTIFY"><B><U>To Store the Results of Current Project</P>
+</U>
+</B><P ALIGN="JUSTIFY">1. Choose Save Project from the File menu with the mouse.  If the current project is loaded from a previously stored project file, the Save Project will overwrite the same project file with the current project.</P>
+<P ALIGN="JUSTIFY">2. If the current project is a new one, i.e., being created by the New command, the Project Save dialog box will appear, as seen in Figure 2-5.</P>
+
+</FONT><B><FONT FACE="HELVETICA" SIZE=1><P ALIGN="center"><IMG SRC="Image20.jpg" width=427 height=265></P>
+<P ALIGN="center">FIGURE  2-5 Save Project Dialog Box</P>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</B></FONT><FONT FACE="TIMES" SIZE=2></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">3. Look at the Files scroll window.  If the file saving is to update (overwrite) a existing project file, the desired filename should be found in the Files scroll list.  If the filename can not be found from current list, change the directory from the Directories scroll list until the desired filename is being shown.  When the desired filename is on the list, click it.</P>
+<P ALIGN="JUSTIFY"> 4. If the file saving is to store a new project file, choose the desired directory, then type in a new filename.</P>
+<P ALIGN="JUSTIFY">5. After the desired filename is selected or inputted, click the OK button to initiate project saving.</P>
+</FONT><B><I><FONT FACE="Arial"><P ALIGN="JUSTIFY"><A NAME="_Toc459033740">2.4&#9;<A NAME="SaveAsProject">Save As Project</A></A></P>
+</B></I></FONT><FONT SIZE=2>
+</FONT><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">The  Save As Project option is to store the current project as a COCOMO project file, which has a file name different from current file.</P><DIR>
+<DIR>
+<DIR>
+<DIR>
+
+<P ALIGN="JUSTIFY">  </P></DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<B><U><P ALIGN="JUSTIFY">To Store Current Project With different File Name</P>
+</B></U><P ALIGN="JUSTIFY">1. Choose Save As Project from the File menu with the mouse.</P>
+<P ALIGN="JUSTIFY">2. The Save Project dialog box will appear, as seen in Figure 2-6.</P>
+<P ALIGN="JUSTIFY">&nbsp;</P>
+
+</FONT><B><FONT FACE="HELVETICA" SIZE=1><P ALIGN="center"><IMG SRC="Image20.jpg" width=427 height=265></P><P ALIGN="center">FIGURE  2-6
+Save Project Dialog Box</P></FONT>
+
+</B><FONT FACE="TIMES" SIZE=2>
+
+<P ALIGN="JUSTIFY">3. Look at the Files scroll window.  If the file saving is to update (overwrite) a existing project file, the desired filename should be found in the Files scroll list.  If the filename can not be found from current list, change the directory from the Directories scroll list until the desired filename is being shown.  When the desired filename is on the list, click it.</P>
+<P ALIGN="JUSTIFY"> 4. If the file saving is to store a new project file, choose the desired directory, then type in a new filename in the SELECTION box.</P>
+<P ALIGN="JUSTIFY">5. After the desired filename is selected or inputted, click the OK button to initiate project saving.  After a project file is saved, the project file name will be displayed on the PROJECT FILE field at the upper left corner of the working window.</P>
+</FONT><B><I><FONT FACE="Arial"><P ALIGN="JUSTIFY"><A NAME="_Toc459033741">2.5&#9;<A NAME="LoadModel">Load Model</A> </A></P>
+</B></I></FONT><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">The Load Model command is used when a specific model, in which the values of multiplying factors and scale factors are different from the COCOMO default model, is to be applied to the current project. </P>
+<P ALIGN="JUSTIFY">The Load Model option is used to retrieve a model file as well as loading it for the current project.</P>
+<B><U><P ALIGN="JUSTIFY">To Retrieve or Load a Model File</P>
+</B></U><P ALIGN="JUSTIFY">1. Choose Load Model from the File menu.</P>
+<P ALIGN="JUSTIFY">2. If a previous model has been modified in the current project, the following dialog box will appear.</P>
+
+</FONT><B><FONT FACE="HELVETICA" SIZE=1><P ALIGN="center"><IMG SRC="Image21.gif" width=258 height=120></P>
+<P ALIGN="center">FIGURE  2-7 Warning Dialog Box</P>
+</FONT>
+</B><FONT FACE="TIMES" SIZE=2>
+
+<P ALIGN="JUSTIFY">3. If the previous model file is to be saved, choose Yes, then a Save Model dialog box will appear. (See Save Model).  If the modified model is not to be saved, choose No.</P>
+<P ALIGN="JUSTIFY">4. The Load Model dialog box will appear as seen in Figure 2-8.</P>
+
+</FONT><B><FONT FACE="HELVETICA" SIZE=1><P ALIGN="center"><IMG SRC="Image22.jpg" width=427 height=265> </P>
+<P ALIGN="center">FIGURE  2-8 Load Model Dialog Box </P>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+<DIR>
+
+</B></FONT><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">&nbsp;</P></DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+</DIR>
+
+<P ALIGN="JUSTIFY">The file name of a COCOMO model has a default format with ".mod" as an extension.  With this window, the desired model file can be selected from the Files scroll list for loading.  If the desired model file does not exist in the scroll list, look for it in the other directories.</P>
+<P ALIGN="JUSTIFY">5. Choose desired directory for file loading</P>
+<P ALIGN="JUSTIFY">6. When the desired file is shown on the Files list, click it, and click the "OK" button to initiate model loading.</P>
+<P ALIGN="JUSTIFY">7. After a model file is loaded, its file name will be displayed on the MODEL FILE field at upper left corner on the working window, and the related costs of current project will be recalculated and shown on the working window.</P>
+</FONT><B><I><FONT FACE="Arial"><P ALIGN="JUSTIFY"><A NAME="_Toc459033742">2.6 </a><A NAME="SaveModel">Save Model</A> </P>
+</FONT></I>
+</B><FONT FACE="TIMES" SIZE=2>
+<P ALIGN="JUSTIFY">The Save Model option is used to store the results of the current COCOMO model as a file with ".mod" extension.</P>
+<B><U><P ALIGN="JUSTIFY">To Store the Results of Current Model</P>
+</B></U><P ALIGN="JUSTIFY">1. Choose Save Model from the File menu.  If the current model is loaded from a previously stored model file, the Save Model will overwrite the same model file with the current model.</P>
+<P ALIGN="JUSTIFY">2. If the current model is a new one, the Save Model dialog box will appear, as seen in Figure 2-9.<BR>
+</P><P ALIGN="center"><IMG SRC="Image23.jpg" width=427 height=265></P>
+<P ALIGN="center"><B><FONT FACE="HELVETICA" SIZE=1>FIGURE  2-9 Save Model Dialog Box</FONT>
+
+</B></P>
+<P ALIGN="JUSTIFY">3. Look at the Files scroll window.  If the file saving is to update (overwrite) a existing model file, the desired filename should be found in the Files scroll list.  If the filename can not be found from current list, change the directory from the Directories scroll list until the desired filename is being shown.  When the desired filename is on the list, click it.</P>
+<P ALIGN="JUSTIFY">4. If the file saving is to store a new model file, choose the desired directory, then type in the filename.</P>
+<P ALIGN="JUSTIFY">5. After the desired filename is selected or inputted, click the OK button to initiate model saving.</P>
+
+</FONT><B><I><FONT FACE="Arial"><P ALIGN="JUSTIFY"><A NAME="_Toc459033743">2.7&#9;<A NAME="SaveAsModel">Save As Model</A></A></P>
+</B></I></FONT><FONT FACE="TIMES" SIZE=2>
+<P ALIGN="JUSTIFY">The Save As Model option is to store the current model as a COCOMO model file, which has a file name different from current model. </P>
+<B><U><P ALIGN="JUSTIFY">To Store Current Model With different File Name</P>
+</B></U><P ALIGN="JUSTIFY">1. Choose Save As Model from the File menu.</P>
+<P ALIGN="JUSTIFY">2. The Save Model dialog box will appear, as seen in Figure 2-10.</P>
+
+</FONT><FONT FACE="TIMES" SIZE=2><P ALIGN="center"><IMG SRC="Image23.jpg" width=427 height=265></P>
+<P ALIGN="center"><B><FONT FACE="HELVETICA" SIZE=1>FIGURE  2-10 Save As Model Dialog Box</FONT>
+
+</B></P>
+
+<P ALIGN="JUSTIFY">3. Look at the Files scroll window.  If the file saving is to update (overwrite) a existing model file, the desired filename should be found in the Files scroll list.  If the filename can not be found from current list, change the directory from the Directories scroll list until the desired filename is being shown.  When the desired filename is on the list, click it.</P>
+<P ALIGN="JUSTIFY"> 4. If the file saving is to store a new model file, choose the desired directory, then type in the filename in the SELECTION box.</P>
+<P ALIGN="JUSTIFY">5. After the desired filename is selected or inputted, click the OK button to initiate model saving.  After a model file is saved, the project file name will be displayed on the MODEL FILE field at the upper left corner of the working window.</P>
+</FONT><B><I><FONT FACE="Arial"><P ALIGN="JUSTIFY"><A NAME="_Toc459033744">2.8&#9;<A NAME="MakeReport">Make Report</A></A></P>
+</B></I></FONT><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">The Make Report option creates a COCOMO report in the form of a text file for printing. In Post Architecture mode the text file contains ALL of the COCOMO parameter values and all of the input values. In Early Design mode  only those parameters that affect Early Design are included.</P>
+<B><U><P ALIGN="JUSTIFY">To Create Project Report</P>
+</B></U><P ALIGN="JUSTIFY">1. Choose Make Report from the File menu.</P>
+<P ALIGN="JUSTIFY">2. The Make Report dialog box will appear, as seen in Figure 2-11.</P>
+
+</FONT><FONT FACE="TIMES" SIZE=2><P ALIGN="center"><IMG SRC="Image24.jpg" width=427 height=265></P>
+<P ALIGN="center"><B><FONT FACE="HELVETICA" SIZE=1>FIGURE  2-11 Make Report Dialog Box</FONT>
+
+</B></P>
+<P ALIGN="left">3. Look at the Files scroll window.  If the file saving is to update (overwrite) a existing report file, the desired filename should be found in the Files scroll list.  If the filename can not be found from current list, change the directory from the Directories scroll list until the desired filename is shown.  When the desired filename is on the list, click it.</P>
+<P ALIGN="JUSTIFY"> 4. If the file saving is to store a new report file, choose the desired directory, then type in the filename.</P>
+<P ALIGN="JUSTIFY">5. Choose desired directory for file saving: Look at the filter input box.  The path found in this box represents the directory where the report file is going to be saved.  This path will be changed after each directory change.  To change the directory, click the appropriate directory choice from the Directories scroll list, then click the "Filter" button.  </P>
+<P ALIGN="JUSTIFY">6. After the desired filename is selected or inputted, click the OK button to initiate report file saving.</P>
+<P ALIGN="JUSTIFY">7. To print a COCOMO project report, execute the local commands for your system in order to send the file for printing.  &#9;</P>
+<OL START=9>
+<OL START=9>
+
+<P ALIGN="JUSTIFY"></OL>
+</OL>
+
+<A NAME="Export"></a><A NAME="_Toc459033745"></FONT><B><I><FONT FACE="Arial">2.9
+Export</FONT></I>
+</B></A><FONT SIZE=2>
+<P>The Export option lets you select a directory to write files that can be imported into Excel. This option only works in Post Architecture mode, and only deals with the waterfall model and the corresponding phase distributions.</P>
+
+<P>COCOMO Import &amp; Analyze Tool is an Excel template which automates the process of importing the Comma Separated Values (CSV) files,  produced by the COCOMO File | Export command. This command produces two sheets: Main, which contains Project and Module information, and Phases, which contains the phase distribution information.  DO NOT rename those worksheets.</P>
+
+<P>The template automates the process of generating charts which are useful for software project management. Though the template produces many useful charts, it is still possible to perform your own analysis of the COCOMO data. However to do that you must have a detailed knowledge of Excel and become familiar with the format of the csv files produced by COCOMO. Note that Excel does not permit you to open two workbooks with the same name, even if the workbooks are in different folders. To open the second workbook, you can either close the curren workbook, or rename it. However it is recommended that you do not rename cocomo.xls</P>
+
+<OL START=9>
+<OL START=9>
+
+<P>&nbsp;</P>
+</OL>
+</OL>
+
+<P>Step 1: Start Excel and import the files generated by COCOMO </P>
+<P>Click on Import COCOMO Files. The Browse For Folder dialog box will appear.  Select the folder containing the Comma-Separated Values Files (CSV) generated by USC-COCOMO. If COCOMO Import&amp;Analyze can find the files  it is looking for (Main.csv and Phases.csv) it will open each file, read its contents and place it in the appropriate worksheet. </P>
+
+<P>Step 2: Generate Charts</P>
+<P>Once the sheets 'Main' and 'Phases' have been correctly initialized, you can generate meaningful analyses of the data, with the click of a button. Specific help on each chart is given below.</P>
+
+<P>If the sheet corresponding to the chart you are trying to create has  been already created, then the existing sheet will be activated, and get  the input focus. If you want to overwrite the existing sheet, you will have  to delete it by selecting the Delete Sheet command from the Edit menu.</P>
+
+<P>Performing your own analyses</P>
+<P>The charts that the COCOMO Import and Analyze tool can generate for you are just a subset of what you can do with the data imported into the  'Main' and 'Phases' sheets. COCOMO Import and Analyze Tool provides you with maximum flexibility by:</P>
+
+<P>Copying the relevant parts of 'Main' and 'Phases' sheets into the sheet for the purpose of the generation of graphs; Using references to the values entered in 'Main' and 'Phases sheets, so that if you update the values in those sheets, the changes will be  reflected in all the other 'calculated' sheets, as well as the charts.  Note however, that if you introduce changes in any calculated sheet, the changes wont be carried over to Main or Phases; Allowing you to change some values. In particular, the sheets  'Project Cumulative Cost' and 'Project Cost per Phase' allow you to enter the Cost per Person-Month per Phase. The provided value is just an average computed from the COCOMO values. However you can use the value which reflects more accurately your organizational process.</P>
+
+<P>If you click on the button marked Delete All Generated Sheets, and you select OK, all the 'calculated' sheets will be deleted.  If you introduce changes to one of the 'calculated' sheets, and  to prevent the sheet from being deleted, it is recommended that you rename the sheet.</P>
+
+<P>The 'Menu' sheet is protected to avoid accidental displacement of the various buttons. It also disables resizing rows and columns, as well as selecting a range of cells. If you need to make changes to the 'Menu' sheet, toggle the 'Protect Sheet/Unprotect Sheet from the  Protection command under the Tools menu.</P>
+
+<B><P>Chart Explanations</P>
+</B><I>
+<P>Project Schedule per Phase</P>
+</I><P>This chart is useful for determining the total calendar time required  for the completion of the project.</P>
+
+<P>COCOMO computes the schedule as the calendar time in months from the determination of a product's requirements baseline to the completion  of an acceptance activity certifying that the product satisfies its  requirements. Time spent in requirements is computed as an additional 20%.</P>
+
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<I><P>Cost per Phase</P>
+</I><P>This chart is useful for determining the cumulative cost as the project moves from one phase to another. It also displays the milestones between the phases (using the assumption of the Waterfall Model).</P>
+
+<P>To obtain the Cost per Phase, given that the COCOMO computes only the Effort per Phase, it is necessary to compute the average Cost per  Person-Month as Total Cost for entire project   (excluding requirements) / Total Effort  in Person-Months. Effort for requrements is assumed at an additional 7% of the Total Effort, and with the same Cost per Person-Month as the overall project. If your organization uses other Costs per Person-Month, you can use those values instead.</P>
+
+<I><P>Cumulative Cost</P>
+</I><P>This chart is useful for determining the cumulative cost of a project over time. It also displays the milestones between the phases (using the assumption of the Waterfall Model).</P>
+
+<P>To obtain the Cost per Phase, given that the COCOMO computes only the Effort per Phase, it is necessary to compute the average Cost per Person-Month as Total Cost  for entire project  (excluding requirements) / Total Effort  in Person-Months. Effort for requirements is assumed at an additional 7% of the Total Effort, and with the same Cost per Person-Month as the overall project. If your organization uses other Costs per Person-Month, you can use those values instead.</P>
+
+<I><P>Cost per Module</P>
+</I><P>This chart is useful for determining the cost of every module, and comparing  which modules are accounting for the highest part of the cost. The cost of the  entire project is the sum of the costs of the individual modules. Since these are only estimates, error bars are used to display the range within which the actual cost will fall, with a very high probability. COCOMO generates only the Optimistic (as 0.8xMost Likely) and the Pessimistic  bound (as 1.25xMost Likely) for the cost of the entire project.  The Optimistic/Pessimistic bounds on the cost estimates of the individual modules  are similarly computed. This assumes that the error on the cost estimate for the  entire project is the sum of the errors on the cost of the component modules. You can modify the Optimistic/Pessimistic bounds on the individual modules to  match your organizational experience. The error bars will be adjusted accordingly.</P>
+
+<I><P>Effort</P>
+</I><P>Project Effort per Phase</P>
+<P>This chart displays how the total effort for the overall project is distributed across phases.</P>
+
+<P>The Effort percentages computed by COCOMO, that are displayed under 'Percentage' exclude the effort spent on requirements. However, the percentages displayed on the chart include the effort spent on Requirements, hence the slight difference.</P>
+
+<P>&nbsp;</P>
+<I><P>Effort per Phase and Module</P>
+</I><P>This chart displays the effort spent on every module, during the phases of the project. It can be used to quickly identify the modules which are the most effort-intensive. Effort for requirements is assumed at an additional 7% of the Total Effort.</P>
+
+<P>&nbsp;</P>
+<I><P>Staffing</P>
+</I><P>Project Personnel per Schedule This chart displays the staffing levels of the project over its duration. The cutoff points between the various phases are also clearly displayed. Staffing levels are assumed to remain constant during a given phase, and  to experience a sharp increase/decrease at the beginning/end of a phase.</P>
+
+<P>&nbsp;</P>
+<I><P>Project Personnel per Phase</P>
+</I><P>This chart displays the staffing levels of the project during the various phases. Staffing levels are assumed to remain constant during a given phase, and to  experience a sharp increase/decrease at the beginning/end of a phase.</P>
+
+<I><P>Personnel per Module</P>
+</I><P>This chart displays the staffing requirements for every module. It is useful for identifying the most labor intensive modules, and to appropriately plan for the staffing of teams which are typically responsible for modules within the project.</P>
+
+<I><P>Activity</P>
+</I><P>Project Activity per Phase This chart displays the effort spent by activity during the project lifetime. The activities correspond to the ones associated with a waterfall model.</P>
+
+<P>The effort spent per activity is computed as a percentage from the total effort spent during a phase. Refer to the EFFORT (%) section of the 'Phases' sheet to  view the percentages used. The same percentages are used for the overall project,</P>
+<P>and for the individual modules. If you think from your organizational experience that some modules may require different activity distribution than others you can recompute the effort spent by activity for those modules.</P>
+
+<I><P>Project Personnel per Activity and Phase </P>
+</I><P>This chart displays the personnel required for every activity during each phase of  the project. The activities correspond to the ones associated with a waterfall model.</P>
+
+<P>The personnel required for every activity is computed from the effort spent per activity. The effort spent per activity is computed as a percentage from the total  effort spent during a phase. Refer to the EFFORT (%) section of the 'Phases sheet to view the percentages used. The same percentages are used for the overall project, and for the individual modules. If you think from your organizational experience that some modules may require different activity distribution than others, you can re-compute the effort spent by activity for those modules.</P>
+
+<I><P>General Assumptions</P>
+</I><P>The general assumptions behind COCOMO are briefly listed below. </P>
+
+<P>For all the analyses, it is assumed that the waterfall model is used; in particular,  a phase does not start until the previous one has been completed.</P>
+
+<P>COCOMO treats the effort and the schedule spent on plans and requirements as separate from the effort and the schedule spent on the other phases (Product Design, Programming,  Integration and Test).</P>
+
+<P>The Effort percentages computed by COCOMO, exclude the effort spent on requirements</P>
+
+<P>COCOMO computes the schedule as the calendar time in months from the determination  of a product's requirements baseline to the completion of an acceptance activity  certifying that the product satisfies its requirements. Time spent in requirements is computed as an additional 20%.</P>
+
+<P>COCOMO uses a single labor rate for a given module within the project, and therefore, does not use Cost per Person-Month for a phase. To compute the cumulative cost per phase, or over time, the Average Cost per Person-Month is computed as Total Cost for entire project  (excluding requirements) / Total Effort  in Person-Months (excluding requirements)</P>
+<P>Total Effort = Effort (Product Design) + Effort (Programming) + Effort  (Integration and Test)</P>
+
+<P>Effort for requirements is assumed at an additional 7% of the Total Effort,  and with the same Cost per Person-Month as the overall project</P>
+
+<I><P>Known Problems</P>
+</I><P>If the project does not have any cost information (I.e., cost-related data has not been entered and defaults to zero), some charts may be incorrectly displayed, and some cells may have a 'Division by Zero' error.</P>
+
+<P>For unusually large COCOMO data sets, e.g. 50 modules, the predefined graphs may not display correctly. However, by disabling the labeling of the data points, resizing the graphs, you may be able to achieve an acceptable display.</P>
+
+<OL START=9>
+<OL START=9>
+
+<P>&nbsp;</P>
+</FONT><B><U><FONT FACE="TIMES" SIZE=2></OL>
+</OL>
+
+<P ALIGN="JUSTIFY">To Export </P>
+</FONT></U>
+</B><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">1. Choose Export from the File menu.</P>
+</FONT><FONT SIZE=2><P>2. The Export dialog box will appear, as seen in Figure 2-12.</P>
+</FONT><B><FONT FACE="HELVETICA" SIZE=1>
+</B></FONT><FONT SIZE=2>
+<P align="center"><IMG SRC="Image25.gif" width=339 height=219></P>
+
+<P align="center"><b>Figure 2-12 File Export Dialog</b></P>
+
+<P>3. When you click on OK, a dialog box appears if Main.csv and Phases.csv already exist, as shown in Figure 2-13.</P>
+</FONT><B><FONT FACE="HELVETICA" SIZE=1>
+</B></FONT><FONT SIZE=2><P align="center"><IMG SRC="Image26.gif" width=259 height=120></P>
+
+<P align="center"><B><FONT FACE="HELVETICA" SIZE=1>Figure 2-13 Subsequent File Export Dialog Box</FONT>
+</B></P>
+
+<P>4.  If Yes is selected, COCOMO saves two files(main.csv and phase.csv) in the chosen directory.  </P>
+<P>     If No is selected, these files will not be replaced.</P>
+<A NAME="SaveScreens"></a><A NAME="_Toc459033746"></FONT><B><I><FONT FACE="Arial">2.10
+Save Screens</FONT></I>
+
+</B></A><FONT SIZE=2>
+<P>The Save Screens option allows the user to save the image of any Cocomo window.</P>
+
+</FONT><B><U><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">To Save Screens</P>
+</B></U><P ALIGN="JUSTIFY">1. Choose Save Screens from the File menu.</P>
+</FONT><FONT SIZE=2><P>2. The Save Screens dialog box will appear, as seen in Figure 2-14.</P>
+
+<P>3. Follow the directions on the dialog box.</P>
+
+</FONT><FONT SIZE=2><P align="center"><IMG SRC="Image27.gif" width=301 height=218></P><P align="center"><B><FONT FACE="HELVETICA" SIZE=1>Figure 2-14
+Save Screens Dialog Box</FONT>
+
+</B></P>
+
+<P>&#9;&#9;</P>
+</FONT><B><I><FONT FACE="Arial"><P ALIGN="JUSTIFY"><A NAME="_Toc459033747">2.11&#9;<A NAME="PrintScreen">Print Screen</A></A></P>
+</B></I></FONT><FONT SIZE=2>
+<P>The Print Screen option prints the screen of the main Cocomo window. </P>
+
+</FONT><B><U><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">To Print Screen</P>
+</B></U><P ALIGN="JUSTIFY">1. Choose Print Screen from the File menu.</P>
+</FONT><FONT SIZE=2><P>2. The Print Screen dialog box will appear, as seen in Figure 2-15.</P>
+<P>&nbsp;</P>
+
+</FONT><FONT SIZE=2>
+
+<P align="center"><IMG SRC="Image28.gif" WIDTH=438 HEIGHT=327></P>
+
+<P align="center"><B><FONT FACE="HELVETICA" SIZE=1>Figure 2-15 Print Screen Dialog Box</FONT>
+</B></P>
+
+<P>3. The Name of the printer can be selected from the dropdown list.  Alternatively, you can print to a file by clicking on the Print to file checkbox. </P>
+<P>4. Properties of the printer can be set by clicking on the Properties button.</P>
+<P>5. The Print range can be All or Pages (e.g. from 1 to 3).</P>
+<P>6. The Number of copies can be selected by clicking the up and down arrows, or by typing a number directly.</P>
+<P>7. Select OK when finished to print or select Cancel to not print.</P>
+</FONT><B><I><FONT FACE="Arial"><P ALIGN="JUSTIFY"><A NAME="_Toc459033748">2.12&#9;<A NAME="PrintPreview">Print Preview</A></A></P>
+</B></I></FONT><FONT SIZE=2>
+<P>The Print Preview option displays that which will appear when printed, if Print Screen is selected from the File menu.</P>
+
+<P>&nbsp;</P>
+</FONT><B><U><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">To Preview what is to be printed</P>
+</B></U><P ALIGN="JUSTIFY">1. Choose Print Preview from the File menu.</P>
+</FONT><FONT SIZE=2><P>2. The Print Preview dialog box will appear, as seen in Figure 2-16.</P>
+<P>&nbsp;</P>
+
+</FONT><B><FONT FACE="HELVETICA" SIZE=1><P ALIGN="center"><IMG SRC="Image29.gif" WIDTH=648 HEIGHT=409></P>
+<P ALIGN="center">Figure 2-16 Print Preview Dialog Box</P>
+<DIR>
+<DIR>
+
+</B></FONT><FONT SIZE=2>
+<P>&nbsp;</P></DIR>
+</DIR>
+
+<OL START=3>
+
+<LI>Select the Print button to print.</LI>
+<LI>The Next Page button to advance to the next Page.  </LI>
+<LI>The Zoom In button zooms in, and the Zoom Out button becomes enabled so that the user can zoom out.  </LI>
+<LI>The Close button closes the Print Preview dialog.</LI></OL>
+
+<P>&#9;</P>
+</FONT><B><I><FONT FACE="Arial"><P ALIGN="JUSTIFY"><A NAME="_Toc459033749">2.13&#9;<A NAME="PrintSetup">Print Setup</A></A></P>
+</B></I></FONT><FONT SIZE=2>
+<P>The Print Setup option allows the user to set up printing.</P>
+
+</FONT><B><U><FONT FACE="TIMES" SIZE=2><P ALIGN="JUSTIFY">To set up Printing</P>
+</B></U><P ALIGN="JUSTIFY">1. Choose Print Setup from the File menu.</P>
+</FONT><FONT SIZE=2><P>2. The Print Setup dialog box will appear, as seen in Figure 2-17.</P>
+<P>&nbsp;</P>
+
+</FONT><B><FONT FACE="HELVETICA" SIZE=1><P ALIGN="center"><IMG SRC="Image30.jpg" width=439 height=315></P>
+<P ALIGN="center">Figure 2-17 Print Setup Dialog Box</P>
+</FONT>
+
+</B><FONT SIZE=2><P>3.   The Name of the printer can be selected from the dropdown list. </P>
+<P>4.   Properties of the printer can be set by clicking on the Properties button.</P>
+<P>5.   The Size and Source of the paper can be selected from the dropdown lists.</P>
+<P>6.   The Network  button can be selected to connect to a printer on a network.</P>
+7. Select OK when finished to print or select Cancel to not print.
+
+</FONT><B><I><FONT FACE="Arial"><P ALIGN="JUSTIFY">&nbsp;</P>
+<P ALIGN="JUSTIFY"><A NAME="_Toc459033750">2.14&#9;<A NAME="Exit">Exit</A></A></P>
+</B></I></FONT><FONT FACE="TIMES" SIZE=2>
+<P ALIGN="JUSTIFY">The Exit option leaves the COCOMO system.</P>
+<B><U><P ALIGN="JUSTIFY">To Exit COCOMO</P>
+</B></U><P ALIGN="JUSTIFY">1. Choose Exit from the File menu with the mouse.</P>
+</FONT><FONT SIZE=2><P>2. This causes your system to terminate the cocomo program. </P>
+
+<P>&nbsp;</P>
+<P>&nbsp;</P></FONT></BODY>
+</HTML>
