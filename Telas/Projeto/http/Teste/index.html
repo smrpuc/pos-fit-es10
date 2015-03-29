@@ -1,3 +1,54 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['form_name'] == 'loginform')
+{
+   $success_page = '';
+   $error_page = basename(__FILE__);
+   $database = './usersdb.php';
+   $crypt_pass = md5($_POST['password']);
+   $found = false;
+   $fullname = '';
+   $session_timeout = 600;
+   if(filesize($database) > 0)
+   {
+      $items = file($database, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+      foreach($items as $line)
+      {
+         list($username, $password, $email, $name, $active) = explode('|', trim($line));
+         if ($username == $_POST['username'] && $active != "0" && $password == $crypt_pass)
+         {
+            $found = true;
+            $fullname = $name;
+         }
+      }
+   }
+   if($found == false)
+   {
+      header('Location: '.$error_page);
+      exit;
+   }
+   else
+   {
+      if (session_id() == "")
+      {
+         session_start();
+      }
+      $_SESSION['username'] = $_POST['username'];
+      $_SESSION['fullname'] = $fullname;
+      $_SESSION['expires_by'] = time() + $session_timeout;
+      $_SESSION['expires_timeout'] = $session_timeout;
+      $rememberme = isset($_POST['rememberme']) ? true : false;
+      if ($rememberme)
+      {
+         setcookie('username', $_POST['username'], time() + 3600*24*30);
+         setcookie('password', $_POST['password'], time() + 3600*24*30);
+      }
+      header('Location: '.$success_page);
+      exit;
+   }
+}
+$username = isset($_COOKIE['username']) ? $_COOKIE['username'] : '';
+$password = isset($_COOKIE['password']) ? $_COOKIE['password'] : '';
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,7 +66,6 @@ body
    padding: 0;
 }
 </style>
-<link href="cupertino/jquery.ui.all.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 a
 {
@@ -37,476 +87,71 @@ a:hover
 }
 </style>
 <style type="text/css">
-#wb_CssMenu1
+.loginform_table
 {
-   border: 0px #C0C0C0 solid;
-   background-color: transparent;
-}
-#wb_CssMenu1 ul
-{
-   list-style-type: none;
-   margin: 0;
-   padding: 0;
-}
-#wb_CssMenu1 li
-{
-   float: left;
-   margin: 0;
-   padding: 0px 4px 0px 0px;
-   width: 80px;
-}
-#wb_CssMenu1 a
-{
-   display: block;
-   float: left;
-   color: #666666;
-   border: 1px #C0C0C0 solid;
    background-color: #EEEEEE;
-   background-image: none;
+   border-color:#878787;
+   border-width:1px;
+   border-style: solid;
+   color: #000000;
+   border-spacing: 4px;
    font-family: Arial;
    font-size: 13px;
-   font-weight: normal;
-   font-style: normal;
-   text-decoration: none;
-   width: 68px;
-   height: 26px;
-   padding: 0px 5px 0px 5px;
-   vertical-align: middle;
-   line-height: 26px;
-   text-align: center;
+   text-align: right;
 }
-#wb_CssMenu1 li:hover a, #wb_CssMenu1 a:hover
+.loginform_header
 {
-   color: #666666;
-   background-color: #C0C0C0;
-   background-image: none;
-   border: 1px #C0C0C0 solid;
-}
-#wb_CssMenu1 li.firstmain
-{
-   padding-left: 0px;
-}
-#wb_CssMenu1 li.lastmain
-{
-   padding-right: 0px;
-}
-#wb_CssMenu1 li:hover, #wb_CssMenu1 li a:hover
-{
-   position: relative;
-}
-#wb_CssMenu1 a.withsubmenu
-{
-   padding: 0 5px 0 5px;
-   width: 68px;
-   background-image: none;
-}
-#wb_CssMenu1 li:hover a.withsubmenu, #wb_CssMenu1 a.withsubmenu:hover
-{
-   background-image: none;
-}
-#wb_CssMenu1 ul ul
-{
-   position: absolute;
-   left: -9999px;
-   top: -9999px;
-   width: 100px;
-   height: auto;
-   border: none;
-   background-color: transparent;
-}
-#wb_CssMenu1 ul :hover ul
-{
-   left: 0px;
-   top: 28px;
-   padding-top: 0px;
-}
-#wb_CssMenu1 .firstmain:hover ul
-{
-   left: 0px;
-}
-#wb_CssMenu1 li li
-{
-   width: 100px;
-   padding: 0 0px 0px 0px;
-   border: 0px #C0C0C0 solid;
-   border-width: 0 0px;
-}
-#wb_CssMenu1 li li.firstitem
-{
-   border-top: 0px #C0C0C0 solid;
-}
-#wb_CssMenu1 li li.lastitem
-{
-   border-bottom: 0px #C0C0C0 solid;
-}
-#wb_CssMenu1 ul ul a, #wb_CssMenu1 ul :hover ul a
-{
-   float: none;
-   margin: 0;
-   width: 86px;
-   height: auto;
-   white-space: normal;
-   padding: 7px 6px 6px 6px;
-   background-color: #EEEEEE;
-   background-image: none;
-   border: 1px #C0C0C0 solid;
-   color: #666666;
-   font-family: Arial;
-   font-size: 13px;
-   font-weight: normal;
-   font-style: normal;
-   line-height: 13px;
-   text-align: left;
-   text-decoration: none;
-}
-#wb_CssMenu1 ul :hover ul .firstitem a
-{
-   margin-top: 0px;
-}
-#wb_CssMenu1 ul ul :hover a, #wb_CssMenu1 ul ul a:hover, #wb_CssMenu1 ul ul :hover ul :hover a, #wb_CssMenu1 ul ul :hover ul a:hover
-{
-   background-color: #C0C0C0;
-   background-image: none;
-   border: 1px #C0C0C0 solid;
-   color: #666666;
-}
-#wb_CssMenu1 br
-{
-   clear: both;
-   font-size: 1px;
-   height: 0;
-   line-height: 0;
-}
-#MegaMenu1
-{
-   float: left;
-   list-style: none;
-   margin: 0;
-   padding: 0;
-   width: 100%;
-   font-family: Arial;
-   font-size: 13px;
-}
-#MegaMenu1 li
-{
-   float: left;
-   margin: 0;
-   padding: 0;
-   position: relative;
-}
-#MegaMenu1 li a
-{
-   float: left;
-}
-#MegaMenu1 li .submenu
-{
-   display: none;
-   float: left;
-   left: 0;
-   padding: 15px 15px 15px 15px;
-   position: absolute;
-   top: 0;
-}
-#MegaMenu1 li .row
-{
-   clear: both;
-   float: left;
-   margin-bottom: 10px;
-   width: 100%;
-}
-#MegaMenu1 li .submenu ul
-{
-   float: left;
-   list-style: none;
-   margin: 0;
-   padding: 0;
-   width: 150px;
-}
-#MegaMenu1 .submenu ul li
-{
-   width: 100%;
-}
-#MegaMenu1 .submenu ul li h2
-{
-   font-family: Arial;
-   font-size: 13px;
-   font-weight: bold;
-   font-style: normal;
-   margin: 0;
-   padding: 0;
-   text-decoration: none;
-}
-#MegaMenu1 .submenu ul li h2 a
-{
-   background-image: none;
-   background-color: transparent;
-   border-width: 0;
-   font-weight: bold;
-   font-style: normal;
-   padding: 5px 0;
-   text-decoration: none;
-}
-#MegaMenu1 .submenu ul li h2 a:hover
-{
-   padding: 5px 0;
-}
-#MegaMenu1 .submenu ul li a
-{
-   display: block;
-   float: none;
-   font-weight: normal;
-   font-style: normal;
-   height: auto;
-   padding: 7px 5px 7px 15px;
-   text-decoration: none;
-   text-indent: 0;
-}
-#MegaMenu1 .submenu ul li a:hover
-{
-   padding: 6px 4px 6px 14px;
-}
-#MegaMenu1 .submenu ul li a .ui-icon
-{
-   left: 0;
-   margin-top: -8px;
-   position: absolute;
-   top: 50%;
-}
-#MegaMenu1 .button
-{
-   cursor: pointer;
-   font-weight: normal;
-   font-style: normal;
-   margin: 0 1px 0 0;
-   outline: 0;
-   padding: 4px 20px 4px 8px;
-   position: relative;
-   text-align: center;
-   text-decoration: none !important;
-   color: #2779AA;
-}
-#MegaMenu1 .button:hover
-{
-   color: #0070A3;
-}
-#MegaMenu1 .button:active
-{
+   background-color: #878787;
    color: #FFFFFF;
+   text-align: center;
 }
-#MegaMenu1 .ui-widget-content a
+.loginform_text
 {
-   color: #362B36;
+   background-color: #FFFFFF;
+   border-color: #878787;
+   border-width: 1px;
+   border-style: solid;
+   color: #000000;
+   font-family: Arial;
+   font-size: 13px;
 }
-#MegaMenu1 .ui-widget-content a:hover
+.loginform_button
 {
-   color: #0070A3;
-}
-#MegaMenu1 .button .ui-icon
-{
-   left: auto;
-   margin-top: -8px;
-   margin-left: 0;
-   position: absolute;
-   right: 4px;
-   top: 50%;
+   background-color: #FFFFFF;
+   border-color: #878787;
+   border-width: 1px;
+   border-style: solid;
+   color: #000000;
+   font-family: Arial;
+   font-size: 13px;
 }
 </style>
-<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function()
-{
-   $('#MegaMenu1 .submenu ul li h2 a').addClass('ui-widget-header');
-   $('#MegaMenu1 .submenu ul li a').hover(function()
-   {
-      $(this).addClass('ui-state-default');
-   }, function()
-   {
-      $(this).removeClass('ui-state-default');
-   });
-   $('.ui-state-default').hover(function()
-   {
-      $(this).addClass('ui-state-hover');
-   }, function()
-   {
-      $(this).removeClass('ui-state-hover');
-   });
-   $('#MegaMenu1 li').hover(function()
-   {
-      var top = $(this).find('.button').outerHeight();
-      $(this).find('.submenu').css( {'top': top });
-      $(this).find('.submenu').show();
-      if ($(this).find('.row').length > 0 )
-      {
-         var maxRowWidth = 0;
-         $(this).find('.row').each(function()
-         {
-            var width = 0;
-            $(this).find('ul').each(function()
-            {
-               width += $(this).width();
-            });
-            if (width > maxRowWidth)
-            {
-               maxRowWidth = width;
-            }
-         });
-         $(this).find('.submenu').css({'width' : maxRowWidth});
-         $(this).find('.row:last').css({'margin': '0'});
-      }
-      else
-      {
-         var width = 0;
-         $(this).find('ul').each(function()
-         {
-            width += $(this).width();
-         });
-         $(this).find('.submenu').css({'width' : width});
-      }
-      $(this).find('.submenu').slideDown();
-   }, function()
-   {
-      $(this).find('.submenu').hide();
-   })
-   $('#MegaMenu1 li .submenu').hide();
-});
-</script>
 </head>
 <body>
 <a href="http://www.wysiwygwebbuilder.com" target="_blank"><img src="images/builtwithwwb9.png" alt="WYSIWYG Web Builder" style="position:absolute;left:453px;top:735px;width:88px;height:31px;border-width:0;z-index:250"></a>
-<div id="wb_CssMenu1" style="position:absolute;left:34px;top:22px;width:735px;height:58px;z-index:1;">
-<ul>
-<li class="firstmain"><a class="withsubmenu" href="#" target="_self">Administrativo</a>
-
-<ul>
-<li class="firstitem lastitem"><a href="#" target="_self">Cliente</a>
-</li>
-</ul>
-</li>
-<li><a href="#" target="_self">Button&nbsp;2</a>
-</li>
-<li><a href="#" target="_self">Button&nbsp;3</a>
-</li>
-<li><a href="#" target="_self">Button&nbsp;4</a>
-</li>
-</ul>
-<br>
-</div>
-<div id="wb_MegaMenu1" style="position:absolute;left:218px;top:325px;width:273px;height:100px;z-index:2;">
-   <ul class="ui-widget" id="MegaMenu1">
-      <li>
-      <a href="#" class="button ui-state-default"><span class="ui-icon ui-icon-triangle-1-s"></span>Button 1</a>
-      <div class="submenu ui-widget-content">
-      <div class="row">
-         <ul style="width:206px">
-            <li><h2><a href="#">Category 1</a></h2></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-         </ul>
-         <ul style="width:206px">
-            <li><h2><a href="#">Category 2</a></h2></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-         </ul>
-         <ul style="width:206px">
-            <li><h2><a href="#">Category 3</a></h2></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-         </ul>
-         <ul style="width:206px">
-            <li><h2><a href="#">Category 4</a></h2></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-         </ul>
-      </div>
-      </div>
-      </li>
-      <li>
-      <a href="#" class="button ui-state-default"><span class="ui-icon ui-icon-triangle-1-s"></span>Button 2</a>
-      <div class="submenu ui-widget-content">
-      <div class="row">
-         <ul style="width:206px">
-            <li><h2><a href="#">Category 1</a></h2></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-         </ul>
-      </div>
-      <div class="row">
-         <ul style="width:206px">
-            <li><h2><a href="#">Category 2</a></h2></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-         </ul>
-      </div>
-      <div class="row">
-         <ul style="width:206px">
-            <li><h2><a href="#">Category 3</a></h2></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-         </ul>
-      </div>
-      <div class="row">
-         <ul style="width:206px">
-            <li><h2><a href="#">Category 4</a></h2></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-         </ul>
-      </div>
-      </div>
-      </li>
-      <li>
-      <a href="#" class="button ui-state-default"><span class="ui-icon ui-icon-triangle-1-s"></span>Button 3</a>
-      <div class="submenu ui-widget-content">
-      <div class="row">
-         <ul style="width:206px">
-            <li><h2><a href="#">Category 1</a></h2></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-         </ul>
-         <ul style="width:206px">
-            <li><h2><a href="#">Category 2</a></h2></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-         </ul>
-      </div>
-      <div class="row">
-         <ul style="width:206px">
-            <li><h2><a href="#">Category 3</a></h2></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-         </ul>
-         <ul style="width:206px">
-            <li><h2><a href="#">Category 4</a></h2></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-            <li><a href="http://www.wysiwygwebbuilder.com"><span class="ui-icon ui-icon-triangle-1-e"></span>WYSIWYG Web Builder</a></li>
-         </ul>
-      </div>
-      </div>
-      </li>
-   </ul>
+<div id="wb_Login1" style="position:absolute;left:455px;top:180px;width:194px;height:130px;text-align:right;z-index:1;">
+<form name="loginform" method="post" action="<?php echo basename(__FILE__); ?>" id="loginform">
+<input type="hidden" name="form_name" value="loginform">
+<table class="loginform_table" style="width:194px;height:130px;">
+<tr>
+   <td class="loginform_header" colspan="2" style="height:20px;">Log In</td>
+</tr>
+<tr>
+   <td style="height:20px;width:63px">Login:</td>
+   <td style="text-align:left"><input class="loginform_text" name="username" type="text" id="username" value="<?php echo $username; ?>" style="width:100px;height:18px;"></td>
+</tr>
+<tr>
+   <td style="height:20px">Senha:</td>
+   <td style="text-align:left"><input class="loginform_text" name="password" type="password" id="password" value="<?php echo $password; ?>" style="width:100px;height:18px;"></td>
+</tr>
+<tr>
+   <td>&nbsp;</td><td style="text-align:left;height:20px"><input id="rememberme" type="checkbox" name="rememberme">Lembrar</td>
+</tr>
+<tr>
+   <td>&nbsp;</td><td style="text-align:left;vertical-align:bottom"><input class="loginform_button" type="submit" name="login" value="Acessar" id="login" style="width:70px;height:20px;"></td>
+</tr>
+</table>
+</form>
 </div>
 </body>
 </html>
